@@ -136,21 +136,37 @@ public class Deck {
         System.out.println("Se mezclo el Deck");
     }
     
-    public void head(){
-        System.out.println(this.revueltas.peek().toString());
-        System.out.println("Quedan: " + this.revueltas.size());
+    public void head() throws Exception{
+        if(this.revueltas.size() == 0){
+            throw new Exception("Se han agotado las cartas");
+        }else{
+            System.out.println(this.revueltas.peek().toString());
+            System.out.println("Quedan: " + this.revueltas.size());
+        }
     }
     
-    public void pick(){
-        System.out.println(this.revueltas.poll().toString());
-        System.out.println("Quedan: " + this.revueltas.size());
+    public void pick() throws Exception{
+        if(this.revueltas.size() == 0){
+            throw new Exception("Se han agotado las cartas");
+        }else{
+            System.out.println(this.revueltas.poll().toString());
+            System.out.println("Quedan: " + this.revueltas.size());
+        }
+       
     }
     
-    public void hand(){
-        for (int i = 0; i < 5; i++) {
+    public void hand() throws Exception{
+        
+        if(this.revueltas.size() == 0){
+            throw new Exception("Se han agotado las cartas");
+        }else{
+            for (int i = 0; i < 5; i++) {
             System.out.println(this.revueltas.poll().toString());
         }
         System.out.println("Quedan: " + this.revueltas.size());
+        }
+        
+        
     }
     
 }

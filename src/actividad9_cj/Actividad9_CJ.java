@@ -6,12 +6,14 @@
 package actividad9_cj;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Actividad9_CJ {
 
     //Metodo para imprimir el menú
-    public static int showMenu(){
+    public static int showMenu() {
         System.out.println("Bienvenidos a PokerManía");
         System.out.println("##########Menú##########");
         System.out.println("# 1. Barajear          #");
@@ -27,9 +29,12 @@ public class Actividad9_CJ {
         try{
             opcion = sc.nextInt();
         }catch(Exception e){
+            System.out.println("Ingresa una opción valida del menú.");
             return showMenu();
         }
+        
         if(opcion<1 || opcion>5){
+            System.out.println("Ingresa una opción valida del menú.");
             return showMenu();
         }else{
             return opcion;
@@ -55,13 +60,36 @@ public class Actividad9_CJ {
                     baraja.shuffle();
                     break;
                 case 2:
-                    baraja.head();
+            
+                    try {
+                        baraja.head();
+                    } catch (Exception ex) {
+                        System.out.println("Se han acabado las cartas.");
+                        System.out.println("El juego se cerrará.");
+                        salir = true;
+                    } 
+            
                     break;
                 case 3:
-                    baraja.pick();
+                    try {
+                        baraja.pick();
+                    } catch (Exception ex) {
+                        System.out.println("Se han acabado las cartas.");
+                        System.out.println("El juego se cerrará.");
+                        salir = true;
+                    } 
+                    
                     break;
                 case 4:
-                    baraja.hand();
+                    
+                    try {
+                        baraja.hand();
+                    } catch (Exception ex) {
+                        System.out.println("Se han acabado las cartas.");
+                        System.out.println("El juego se cerrará.");
+                        salir = true;
+                    } 
+                    
                     break;
                 case 5:
                     salir = true;
